@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: '-root',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = ' works!';
+  title = 'app works!';
+
+  onTitleClicked($event: string): void {
+    console.log($event);
+  }
 }

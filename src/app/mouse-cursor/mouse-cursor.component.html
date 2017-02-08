@@ -1,0 +1,7 @@
+<p>
+  mouse-cursor works!
+</p>
+<p> Position: {{positionX}} - {{positionY}}</p>
+<!--<div style="border: 1px solid; border-color:green; width: 500px; height: 300px" (mousemove)="onMouseMove($event)"></div>-->
+<p> Position: {{clientX}} - {{clientY}}</p>
+<div style="height: 400px; width: 400px; border: 1px solid" (mousemove)="clientX=$event.clientX;clientY=$event.clientY"></div>
