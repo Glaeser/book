@@ -1,0 +1,14 @@
+<div *ngIf="book">
+  <p>{{book.isbn}}</p>
+  <form #form="ngForm" (ngSubmit)="save(form.value)">
+    <p><label for="title">Buchtitel</label><br/>
+      <input type="text" [(ngModel)]="book.title" name="title" #title="ngModel" style="width:400px" required></p>
+    <p><label for="subtitle">Untertitel</label><br/>
+      <input type="text" [(ngModel)]="book.subtitle" name="subtitle" #subtitle="ngModel" required style="width:400px"></p>
+    <p><label for="isbn">Isbn</label><br/><input type="text" [(ngModel)]="book.isbn" name="isbn" #isbn="ngModel" style="width:400px"></p>
+    <p><label for="author">Autor</label><br/><input type="text" [(ngModel)]="book.author" name="author" #author="ngModel" style="width:400px"></p>
+
+    <button type="submit" [disabled]="title.errors?.required || title.pristine">Save</button>
+  </form>
+  <div [hidden]="!title.errors?.required || title.pristine">Titel fehlt</div>
+</div>

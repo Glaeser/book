@@ -1,0 +1,11 @@
+<h2>Add New Book</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <input type="text" formControlName="title" placeholder="Buchtitel eingeben"/><br />
+  <span [hidden]="!form.get('title').hasError('required') || form.get('title').pristine" >Title is required</span><br />
+
+  <input type="text" formControlName="isbn" placeholder="ISBN eingeben" /><br />
+  <span [hidden]="!form.get('isbn').hasError('required') || form.get('isbn').pristine">ISBN is required</span><br />
+
+  <button [disabled]="!form.valid">Save</button>
+</form>
