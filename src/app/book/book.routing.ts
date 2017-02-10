@@ -5,6 +5,9 @@ import { BookComponent } from './book.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 
+import { ConfirmCandeactivateGuardService } from './shared/confirm-candeactivate-guard.service'
+
+
 const routes: Route[] = [
     {
         path: '',
@@ -17,7 +20,8 @@ const routes: Route[] = [
             },
             {
                 path: ':isbn',
-                component: BookDetailComponent
+                component: BookDetailComponent,
+                canDeactivate: [ConfirmCandeactivateGuardService]
             }
 
         ]
