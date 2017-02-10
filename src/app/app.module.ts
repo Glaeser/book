@@ -8,6 +8,11 @@ import { InfoBoxComponent } from './info-box/info-box.component';
 import { InfoBoxDetailComponent } from './info-box-detail/info-box-detail.component';
 import { MouseCursorComponent } from './mouse-cursor/mouse-cursor.component';
 import { TitleBoxComponent } from './title-box/title-box.component';
+import { routing } from './app.routing';
+
+
+// import { BookModule } from './book/book.module';
+
 
 @NgModule({
   declarations: [
@@ -15,14 +20,19 @@ import { TitleBoxComponent } from './title-box/title-box.component';
     InfoBoxComponent,
     InfoBoxDetailComponent,
     MouseCursorComponent,
-    TitleBoxComponent
+    TitleBoxComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
+    // ,    BookModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+
 })
 export class AppModule { }

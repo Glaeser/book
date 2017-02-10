@@ -1,0 +1,13 @@
+<!--<p>
+  book-detail: {{isbn}}
+</p>
+<h3>
+  book-title: {{book?.title}}
+</h3>-->
+
+<div *ngIf="book">
+  <h2>{{book.title}} by <small>{{book.author}}</small></h2>
+  <h3>{{book.subtitle}}</h3>
+  <p>{{book.isbn}}</p>
+  <a [routerLink]="['edit']">Edit</a>
+</div>
