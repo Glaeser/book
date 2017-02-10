@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-
+import { BookdataService } from './../shared/bookdata.service';
+import { Book } from './../shared/ibook';
 @Component({
   selector: 'sg-book-new',
   templateUrl: './book-new.component.html',
@@ -8,7 +9,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class BookNewComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private bs: BookdataService) { }
 
   form: FormGroup;
 
@@ -22,7 +23,11 @@ export class BookNewComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.form.value)
-    alert(this.form.value.title + " anglegt")
+    let b = new Book();
+    b.isbn = this.form.value.isbn;
+    b.title = this.form.value.title;
+ 
+    this.bs.createBook(b).subscribe(book=> console.log(book));
+
   }
 }

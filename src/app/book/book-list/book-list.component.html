@@ -1,6 +1,6 @@
 <ul>
   <li *ngFor="let buch of books">
-   <span class="module hero"><a [routerLink]="['/books', buch.isbn]">{{buch.title}}</a></span>
+   <span class="module hero"><a [routerLink]="['/books', buch.isbn]">{{buch.isbn}} @ {{buch.title}}</a></span>
   </li>
 </ul>
 

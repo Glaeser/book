@@ -12,7 +12,7 @@ export interface IBook {
 }
 
 export class Book implements IBook {
-    title: string;
+    title: string = "NaN";
     subtitle: string;
     isbn: string;
     abstract: string;

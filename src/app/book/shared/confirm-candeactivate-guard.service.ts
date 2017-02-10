@@ -9,7 +9,13 @@ export class ConfirmCandeactivateGuardService implements CanDeactivate<BookEditC
   constructor() { }
 
   canDeactivate(component: BookEditComponent, route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    console.log (component.saved);
+    if (component.saved === true) {
+      return true;
+    }
     return confirm('Bist da gwies sicha??');
+
+    
   }
 
 }

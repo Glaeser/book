@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
 import { Book } from '../shared/ibook';
 import { BookdataService } from '../shared/bookdata.service'
@@ -18,12 +19,17 @@ export class BookEditComponent implements OnInit, OnDestroy {
   private serviceSubscription: Subscription;
   public book: Book;
 
-  constructor(private route: ActivatedRoute, private bookService: BookdataService) {
+  constructor(private route: ActivatedRoute, private bookService: BookdataService, private location: Location) {
   }
+
+
+public saved: boolean;
 
   ngOnInit() {
     this.rooterSubscription = this.route.params.subscribe((params: { isbn: string }) => { this.isbn = params.isbn });
     this.serviceSubscription = this.bookService.getByIsbn(this.isbn).subscribe(book => this.book = book);
+    this.saved = false;
+
   }
 
   ngOnDestroy() {
@@ -32,8 +38,10 @@ export class BookEditComponent implements OnInit, OnDestroy {
   }
 
   save(value: any): void {
-    console.log(value);
-    alert("Neuer Buchtitel: " + value.title);
+  this.bookService.updateBook(this.book.isbn, value)
+      .subscribe((book: Book) => console.log('Book updated', book));
+      this.saved = true;
+      this.location.back();
   }
 
 }
